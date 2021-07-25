@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Editor2.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 107.838
+
+[sub_resource type="InputEventAction" id=1]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [node name="Editor" type="Node2D"]
 script = ExtResource( 1 )
@@ -8,5 +23,62 @@ script = ExtResource( 1 )
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( -144.163, -34.7058 )
-polygon = PoolVector2Array( 31.6541, 607.063, 151.79, 502.946, 173.147, 505.616, 226.541, 533.647, 261.247, 545.661, 298.622, 545.661, 358.69, 517.629, 389.391, 526.973, 425.432, 563.014, 554.911, 592.38, 720.432, 585.706, 780.499, 551, 811.201, 514.959, 839.232, 486.928, 873.938, 476.249, 896.63, 476.249, 946.019, 484.258, 1018.1, 538.986, 1051.47, 555.005, 1120.88, 559.009, 1180.95, 557.674, 1243.14, 572.4, 1279.06, 590.36, 1301.51, 620.666, 1309.37, 648.728, 1300.39, 698.116, 1230.34, 751.226, 677.717, 789.936, 115.749, 717.855 )
+position = Vector2( -144.163, -32.7058 )
+polygon = PoolVector2Array( 122.826, 599.26, 510.882, 605.559, 590.256, 589.18, 694.83, 556.422, 803.183, 561.462, 935.475, 603.04, 999.731, 570.282, 1037.53, 546.343, 1081.63, 535.004, 1115.64, 532.484, 1144.62, 537.524, 1182.42, 565.242, 1206.36, 592.96, 1292.03, 600.52, 1313.45, 611.859, 1319.75, 630.758, 1319.75, 653.436, 1298.33, 759.27, 1149.66, 819.746, 1110.6, 768.089, 1147.14, 741.631, 1181.16, 716.432, 1186.2, 662.256, 809.483, 650.917, 680.971, 734.071, 557.499, 823.526, 401.268, 792.028, 276.536, 705.093, 175.742, 657.216 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -144.163, -32.7058 )
+polygon = PoolVector2Array( 1499.81, 280.697, 1631.95, 278.809, 1650.83, 91.9218, 1424.3, 88.1463, 1418.64, 207.075, 1482.82, 218.401 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1666.66, 729.411 )
+shape = SubResource( 5 )
+
+[node name="Control" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+margin_right = 72.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+margin_right = 72.0
+margin_bottom = 14.0
+text = "STICK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer"]
+margin_top = 18.0
+margin_right = 72.0
+margin_bottom = 38.0
+focus_mode = 0
+enabled_focus_mode = 0
+shortcut = SubResource( 2 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetButton" type="Button" parent="Control/VBoxContainer"]
+margin_top = 42.0
+margin_right = 72.0
+margin_bottom = 62.0
+focus_mode = 0
+enabled_focus_mode = 0
+shortcut = SubResource( 4 )
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 512, 300 )
+current = true
+
+[connection signal="pressed" from="Control/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]

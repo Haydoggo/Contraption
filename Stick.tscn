@@ -8,7 +8,7 @@ extents = Vector2( 10, 2 )
 "Parts",
 "Sticks",
 ]]
-collision_mask = 2
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
