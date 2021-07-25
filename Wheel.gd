@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 var motorised_body : RigidBody2D
-var motor_speed = 10
-var motor_power = 90000
+var motor_speed = 5
+var motor_power = 1e3
 
 func _physics_process(delta):
 	if motorised_body == null: return
@@ -10,5 +10,5 @@ func _physics_process(delta):
 	var motor_rel_vel = motor_speed - rel_vel
 	var impulse = motor_rel_vel * motor_power
 	var clamped_impulse = clamp(impulse, -motor_power, motor_power) 
-	apply_torque_impulse(clamped_impulse * delta)
-	motorised_body.apply_torque_impulse(-clamped_impulse * 0.0 * delta)
+	apply_torque_impulse(clamped_impulse)
+	motorised_body.apply_torque_impulse(-clamped_impulse)
