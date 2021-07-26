@@ -1,10 +1,10 @@
 extends RigidBody2D
 
 var motorised_body : RigidBody2D
-var motor_speed = 5
-var motor_power = 1e3
+export(float) var motor_speed = 5
+export(float) var motor_power = 1e3
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if motorised_body == null: return
 	var rel_vel = angular_velocity - motorised_body.angular_velocity
 	var motor_rel_vel = motor_speed - rel_vel

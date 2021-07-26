@@ -9,6 +9,11 @@ extents = Vector2( 10, 2 )
 "Sticks",
 ]]
 collision_layer = 2
+continuous_cd = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -10, 0, 10, 0 )
+width = 4.0
